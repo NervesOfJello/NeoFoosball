@@ -28,7 +28,14 @@ public class Kickbox : MonoBehaviour {
     {
         if (other.tag == "Ball" && Input.GetButtonDown(KickInput))
         {
-            other.GetComponent<Rigidbody>().AddForce(transform.forward.x, parentKicker.KickForce, transform.forward.z, ForceMode.VelocityChange);
+            Kick(other.GetComponent<Rigidbody>());
         }
+    }
+
+    private void Kick(Rigidbody rigidbody)
+    {
+        Vector3 forceVector = new Vector3(transform.forward.x, 0, transform.forward.z) * parentKicker.KickForce;
+        //rigidbody.velocity = new Vector3(transform.forward.x, 0, transform.forward.z) * parentKicker.KickForce;
+        rigidbody.AddForce(forceVector, ForceMode.VelocityChange);
     }
 }
