@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 70aea712ba473f2468a702dd90a7902d
+timeCreated: 1525676295
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Octagonal
+  fontNames:
+  - Octagonal
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 678fc52ac423a8d45969b59ebc30fb85, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
