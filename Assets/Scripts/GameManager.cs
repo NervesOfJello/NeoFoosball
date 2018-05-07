@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour {
     private IEnumerator EndSlatePopupCoroutine()
     {
         yield return new WaitForSeconds(endGameDelay);
-        source.Play();
         fullMessageText.text = "Thank you for Playing";
         yield return new WaitForSeconds(endGameDelay);
         SceneManager.LoadScene("Menu");
