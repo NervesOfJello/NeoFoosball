@@ -14202,11 +14202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940571b68d03e9f439cf53f727f57655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreToWin: 15
+  scoreToWin: 7
   startGameDelay: 1.5
   scoreTheatricsDelay: 1.5
   scoreTickDelay: 0.2
-  endGameDelay: 4.5
+  endGameDelay: 3.5
   flashSpeed: 0.2
   numberOfScoreFlashes: 3
   redTeamText: {fileID: 155611088}
