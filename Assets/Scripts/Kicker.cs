@@ -29,6 +29,7 @@ public class Kicker : MonoBehaviour
     private float maxMovementSpeed;
     [SerializeField]
     private float turnSpeed;
+    public bool controlIsEnabled = true;
 
     //Kick Variables (Placed in Kicker script for ease of editing along with the other player-focused variables)
     [SerializeField]
@@ -60,17 +61,15 @@ public class Kicker : MonoBehaviour
         RotateAndMoveKicker();
 	}
 
-    private void FixedUpdate()
-    {
-
-    }
-
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis(HorizontalInputAxis);
-        verticalInput = Input.GetAxis(VerticalInputAxis);
-        //turn both input axes into one vector for movement
-        moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        if (controlIsEnabled)
+        {
+            horizontalInput = Input.GetAxis(HorizontalInputAxis);
+            verticalInput = Input.GetAxis(VerticalInputAxis);
+            //turn both input axes into one vector for movement
+            moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        }
     }
 
     private void RotateAndMoveKicker()
