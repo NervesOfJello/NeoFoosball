@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -42,11 +43,18 @@ public class GameManager : MonoBehaviour {
     private Rigidbody ballPrefab;
     private float launchForce = 30;
 
+    [Header("Screenshake")]
+    [SerializeField]
+    private CameraShake cameraShake;
+    [SerializeField]
+    private float shakeDuration;
+
     //Gameplay variables
     private int team1Score; //red team
     private int team2Score; //blue team
     private bool canScore;
     private bool gameHasEnded;
+    private AudioSource source;
 
     public int Team1Score //red team
     {
@@ -79,6 +87,7 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
+        source = GetComponent<AudioSource>();
         startGameWaitCoroutine = new WaitForSeconds(startGameDelay);
 
         StartCoroutine(GameLoopCoroutine());
@@ -100,9 +109,11 @@ public class GameManager : MonoBehaviour {
         disableScoreText();
         //run a startup procedure on the message canvas
         fullMessageText.text = "First to " + scoreToWin + " wins";
-        yield return startGameWaitCoroutine;
+        yield return new WaitForSeconds(endGameDelay);
+        source.Play();
         fullMessageText.text = "Ready?";
         yield return startGameWaitCoroutine;
+        source.Play();
         fullMessageText.text = "Begin!";
         //enable scoring
         canScore = true;
@@ -135,9 +146,11 @@ public class GameManager : MonoBehaviour {
             disableScoreText();
             yield return new WaitForSeconds(flashSpeed);
         }
+        source.Play();
         //if the Red Team Won
         if (team1Score > team2Score)
         {
+
             fullMessageText.text = "Red Team Wins!";
         }
         //if the Blue Team Won
@@ -151,8 +164,10 @@ public class GameManager : MonoBehaviour {
     private IEnumerator EndSlatePopupCoroutine()
     {
         yield return new WaitForSeconds(endGameDelay);
+        source.Play();
         fullMessageText.text = "Thank you for Playing";
         yield return new WaitForSeconds(endGameDelay);
+        SceneManager.LoadScene("Menu");
     }
 
     //return true if either team has reached the point maximum
@@ -184,6 +199,7 @@ public class GameManager : MonoBehaviour {
     //flash score text, then increment 
     private IEnumerator ScoreTheatricsCoroutine()
     {
+        cameraShake.shakeDuration += shakeDuration;
         disableScoreText();
         for (int i = 0; i < numberOfScoreFlashes; i++)
         {
@@ -209,6 +225,7 @@ public class GameManager : MonoBehaviour {
 
     private void updateScoreText()
     {
+        source.Play();
         //set team1Score (red team)
         if (team1Score < 10)
             redTeamText.text = "0" + team1Score;

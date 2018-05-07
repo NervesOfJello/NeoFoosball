@@ -7,6 +7,7 @@ public class Kickbox : MonoBehaviour {
     //component variables
     private Kicker parentKicker;
     private Rigidbody ballRigidbody;
+    private AudioSource source;
 
     //variables for treating the triggers like buttons
     private bool triggerDown = false;
@@ -23,6 +24,7 @@ public class Kickbox : MonoBehaviour {
 	void Start ()
     {
         parentKicker = GetComponentInParent<Kicker>();
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -70,6 +72,7 @@ public class Kickbox : MonoBehaviour {
     private void Kick(Rigidbody rigidbody)
     {
         canKick = false;
+        source.Play();
         Vector3 forceVector = new Vector3(transform.forward.x, 0, transform.forward.z) * parentKicker.KickForce;
         rigidbody.AddForce(forceVector, ForceMode.VelocityChange);
     }
