@@ -9,5 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 7f643e88361ac00478d594a20d38056f
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 4e4eefa0852de4045a8e983d2f824611
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: dc6772437af981d45b6ebe8b670674cf
+  - enabled: 1
     path: Assets/Scenes/TwoPlayerArena.unity
     guid: 7fb79582e9f5b9746883197e6ddc7209
